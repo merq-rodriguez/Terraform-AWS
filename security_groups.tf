@@ -1,5 +1,5 @@
-resource "aws_security_group" "SG_Ping_SSH" {
-  name = "SG_Ping_SSH"     
+resource "aws_security_group" "SG_ALLOW_Ping_SSH" {
+  name = "SG_ALLOW_Ping_SSH"     
   description = "Allow Ping and SSH traffic"
   vpc_id      = aws_vpc.main.id
 
@@ -30,9 +30,10 @@ resource "aws_security_group" "SG_Ping_SSH" {
   }
 }
 
-resource "aws_security_group" "SG_HTTP" {
-  name = "SG_HTTP"
+resource "aws_security_group" "SG_ALLOW_HTTP" {
+  name = "SG_ALLOW_HTTP"
   description = "Allow http and https"
+  vpc_id      = aws_vpc.main.id
 
   ingress {
     from_port = 80
