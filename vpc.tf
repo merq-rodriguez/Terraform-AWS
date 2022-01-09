@@ -1,5 +1,5 @@
 resource "aws_vpc" "main" {
-  cidr_block = "10.0.0.0/16"
+  cidr_block = var.vpc_cidr
   enable_dns_hostnames = true
   enable_dns_support   = true
 
@@ -10,9 +10,9 @@ resource "aws_vpc" "main" {
 
 resource "aws_subnet" "subnet1" {
   vpc_id = aws_vpc.main.id
-  cidr_block = "10.0.10.0/24"
+  cidr_block = var.subnet_1_cidr
   map_public_ip_on_launch = true
-  availability_zone = "us-east-2a"
+  availability_zone = var.availability_zone_subnet_1
 
   tags = {
     Name = "Subnet1 on  us-east-2a"
@@ -21,9 +21,9 @@ resource "aws_subnet" "subnet1" {
 
 resource "aws_subnet" "subnet2" {
   vpc_id = aws_vpc.main.id
-  cidr_block = "10.0.20.0/24"
+  cidr_block = var.subnet_2_cidr
   map_public_ip_on_launch = true
-  availability_zone = "us-east-2b"
+  availability_zone = var.availability_zone_subnet_2
 
   tags = {
     Name = "Subnet2 on  us-east-2b"
@@ -32,9 +32,9 @@ resource "aws_subnet" "subnet2" {
 
 resource "aws_subnet" "subnet3" {
   vpc_id = aws_vpc.main.id
-  cidr_block = "10.0.30.0/24"
+  cidr_block = var.subnet_3_cidr
   map_public_ip_on_launch = true
-  availability_zone = "us-east-2c"
+  availability_zone = var.availability_zone_subnet_3
 
   tags = {
     Name = "Subnet3 on  us-east-2c"
